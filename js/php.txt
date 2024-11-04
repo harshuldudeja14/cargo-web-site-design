@@ -1,0 +1,30 @@
+<?php
+$host = "localhost"; // The database server host name
+$username = "id20649325_harshulandjai"; // The database username
+$password = "O04RDt_wTQEGS"; // The database password
+$database = "id20649325_carserv"; // The database name
+
+// Create a connection to the MySQL database server
+$conn = mysqli_connect($localhost, $id20649325_harshulandjai, $O04RDt_wTQEGS, $id20649325_carserv);
+
+// Check if the connection was successful
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Get the values submitted in the form
+$name = $_POST['name'];
+$email = $_POST['email'];
+$message = $_POST['message'];
+
+// Insert the values into the database
+$sql = "INSERT INTO contact(name, email, message) VALUES ('$name', '$email', '$message')";
+if (mysqli_query($conn, $sql)) {
+    echo "Message sent successfully";
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
+
+// Close the database connection
+mysqli_close($conn);
+?>
